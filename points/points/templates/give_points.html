@@ -1,28 +1,35 @@
 {% extends "base.html" %}
 {% load widget_tweaks %}
 {% block content %}
-    <form method="POST">
-        {% csrf_token %}
-        <div class="form-group">
-            <label>Assign Points To:</label>
-            {% render_field form.user class="form-control" %}
+<div class="row">
+    <div class="col-md-12 page-header">
+        <h1>Give Points!</h1>
+    </div>
+    <div class="col-md-12">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Assign Points To:</label>
+                {% render_field form.user class="form-control" %}
 
-            {{ form.description.errors }}
-        </div>
-        <div class="form-group">
-            <label>Description:</label>
-            {% render_field form.description class="form-control" %}
-            <small>Why are you giving these points?</small>
+                {{ form.description.errors }}
+            </div>
+            <div class="form-group">
+                <label>Description:</label>
+                {% render_field form.description class="form-control" %}
+                <small>Why are you giving these points?</small>
 
-            {{ form.description.errors }}
-        </div>
-        <div class="form-group">
-            <label>Number of Points:</label>
-            {% render_field form.point_count class="form-control" %}
+                {{ form.description.errors }}
+            </div>
+            <div class="form-group">
+                <label>Number of Points:</label>
+                {% render_field form.point_count class="form-control" %}
 
-            {{ form.description.errors }}
-        </div>
-        <input class="btn btn-success" type="submit" value="Give Points!">
-    </form>
+                {{ form.description.errors }}
+            </div>
+            <input class="btn btn-success" type="submit" value="Give Points!">
+        </form>
+    </div>
+</div>
 
 {% endblock %}

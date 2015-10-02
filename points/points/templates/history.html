@@ -3,38 +3,29 @@
 
 {% block content %}
 <div class="row">
+
     <div class="col-md-12 page-header">
-        <h1>My Points: <span class="text-success">{{ total_points}}</span></h1>
+        <h1>I've given: <span class="text-success">{{ total_points}}</span> points</h1>
     </div>
     <div class="col-md-12">
+
         <table class="table table-striped">
             <tr>
                 <th>Points</th>
                 <th>Description</th>
-                <th>Given By</th>
+                <th>Given To</th>
                 <th>Date</th>
             </tr>
             {% for pointset in point_list %}
             <tr>
                 <td>{{ pointset.point_count }}</td>
                 <td>{{ pointset.description }}</td>
-                <td>{{ pointset.given_by.first_name }}</td>
+                <td>{{ pointset.user.first_name }}</td>
                 <td>{{ pointset.assigned_datetime }}</td>
             </tr>
             {% endfor %}
         </table>
 
     </div>
-    <audio src="/static/dingdingding.aiff" id="notify"></audio>
-
-
 </div>
-{% endblock %}
-
-{% block extra_js %}
-<script>
-    var audio = new Audio("/static/dingdingding.aiff");
-    audio.play();
-
-</script>
 {% endblock %}

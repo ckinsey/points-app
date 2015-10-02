@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from pointset.views import IndexView, CreatePointSetView
+from pointset.views import IndexView, CreatePointSetView, LeaderBoardView, HistoryView
 
 
 urlpatterns = [
@@ -24,6 +24,8 @@ urlpatterns = [
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', name="logout"),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', IndexView.as_view(), name="index"),
+    url(r'^history$', HistoryView.as_view(), name="history"),
+    url(r'^leaderboard/$', LeaderBoardView.as_view(), name="leaderboard"),
     url(r'^give-points/$', CreatePointSetView.as_view(), name="give-points"),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', name="login"),
 ]

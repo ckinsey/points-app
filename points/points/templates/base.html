@@ -31,30 +31,10 @@
 <div class="container">
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
           <a class="navbar-brand" href="/">Points App</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-              {% if request.user.is_authenticated %}
-                <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logged in as {{request.user.username}} <span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="{% url 'logout' %}">Logout</a></li>
-                      </ul>
-                </li>
-              {% else %}
-
-                <li><a href="{% url 'login' %}">Log in</a></li>
-              {% endif %}
-          </ul>
-        </div><!--/.nav-collapse -->
+          <div class="navbar-right text-right">
+              <a class="btn navbar-btn btn-success navbar-right" href="{% url 'give-points' %}">Give Points</a>
+          </div>
       </div>
     </nav>
 
@@ -65,6 +45,24 @@
     {% endif %}
 
     {% block content %}{% endblock %}
+
+    {% block footer-nav %}
+    <br><br><br>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="list-group">
+                {% if request.user.is_authenticated %}
+                    <li class="list-group-item"><a href="{% url 'leaderboard' %}">My Points</a></li>
+                    <li class="list-group-item"><a href="{% url 'leaderboard' %}">Leaderboard</a></li>
+                    <li class="list-group-item"><a href="{% url 'history' %}">My History</a></li>
+                    <li class="list-group-item"><a href="{% url 'logout' %}" >Log out ({{request.user.username}})</a></li>
+                {% else %}
+                    <li class="list-group-item"><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    {% endblock %}
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
