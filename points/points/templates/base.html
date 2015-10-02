@@ -52,7 +52,7 @@
         <div class="col-md-12">
             <ul class="list-group">
                 {% if request.user.is_authenticated %}
-                    <li class="list-group-item"><a href="{% url 'leaderboard' %}">My Points</a></li>
+                    <li class="list-group-item"><a href="{% url 'index' %}">My Points</a></li>
                     <li class="list-group-item"><a href="{% url 'leaderboard' %}">Leaderboard</a></li>
                     <li class="list-group-item"><a href="{% url 'history' %}">My History</a></li>
                     <li class="list-group-item"><a href="{% url 'logout' %}" >Log out ({{request.user.username}})</a></li>
